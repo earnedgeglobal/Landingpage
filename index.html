@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>EarnEdge Global — Join & Earn</title>
+<meta name="description" content="Real tasks. Real money. Join free today.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  height:100%;width:100%;
+  font-family:system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:#060d1f;
+  color:#f0f4ff;
+  overflow:hidden;
+}
+
+/* Full screen container */
+.page{
+  height:100vh;width:100vw;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:24px 20px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* BG glow — CSS only, no images */
+.page::before{
+  content:'';
+  position:absolute;
+  width:500px;height:500px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(45,126,247,0.18),transparent 70%);
+  top:-150px;left:-150px;
+  pointer-events:none;
+}
+.page::after{
+  content:'';
+  position:absolute;
+  width:400px;height:400px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(232,201,106,0.1),transparent 70%);
+  bottom:-100px;right:-100px;
+  pointer-events:none;
+}
+
+/* Live badge */
+.live{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(34,197,94,0.1);
+  border:1px solid rgba(34,197,94,0.35);
+  color:#4ade80;
+  font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;
+  padding:7px 16px;border-radius:30px;
+  margin-bottom:20px;
+  animation:fadeUp 0.5s ease both;
+}
+.live-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#4ade80;
+  animation:blink 1.5s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* Logo */
+.logo{
+  font-size:clamp(32px,8vw,48px);
+  font-weight:800;
+  letter-spacing:-1px;
+  line-height:1;
+  margin-bottom:6px;
+  animation:fadeUp 0.5s 0.05s ease both;
+}
+.logo .e{color:#f0f4ff}
+.logo .g{color:#2d7ef7}
+
+/* Tagline small */
+.tagline{
+  font-size:12px;font-weight:400;
+  color:rgba(168,184,208,0.6);
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:24px;
+  animation:fadeUp 0.5s 0.1s ease both;
+}
+
+/* Divider */
+.divider{
+  width:40px;height:2px;
+  background:linear-gradient(to right,#2d7ef7,#e8c96a);
+  border-radius:2px;
+  margin-bottom:24px;
+  animation:fadeUp 0.5s 0.15s ease both;
+}
+
+/* Headline */
+.headline{
+  font-size:clamp(22px,6vw,32px);
+  font-weight:800;
+  text-align:center;
+  line-height:1.2;
+  margin-bottom:10px;
+  animation:fadeUp 0.5s 0.2s ease both;
+}
+.headline .blue{color:#2d7ef7}
+.headline .gold{color:#e8c96a}
+
+/* Sub */
+.sub{
+  font-size:14px;color:rgba(168,184,208,0.75);
+  text-align:center;line-height:1.6;
+  margin-bottom:24px;
+  animation:fadeUp 0.5s 0.25s ease both;
+  max-width:300px;
+}
+
+/* Pills row */
+.pills{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  margin-bottom:28px;
+  animation:fadeUp 0.5s 0.3s ease both;
+}
+.pill{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:30px;
+  padding:7px 14px;
+  font-size:12px;font-weight:600;
+  color:rgba(240,244,255,0.8);
+  display:flex;align-items:center;gap:6px;
+}
+
+/* BIG CTA */
+.cta{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,#1a5fc8,#2d7ef7);
+  color:white;
+  font-size:17px;font-weight:800;
+  padding:18px 36px;
+  border-radius:50px;
+  text-decoration:none;
+  box-shadow:0 8px 28px rgba(45,126,247,0.5);
+  width:100%;max-width:320px;
+  margin-bottom:12px;
+  animation:fadeUp 0.5s 0.35s ease both;
+  transition:transform 0.2s,box-shadow 0.2s;
+  border:1px solid rgba(255,255,255,0.15);
+  letter-spacing:0.3px;
+}
+.cta:active{transform:scale(0.97)}
+.cta-icon{font-size:20px}
+
+/* Free note */
+.free-note{
+  font-size:12px;color:rgba(168,184,208,0.45);
+  text-align:center;letter-spacing:0.5px;
+  animation:fadeUp 0.5s 0.4s ease both;
+}
+.free-note span{color:#4ade80;font-weight:600}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Pulse ring on CTA */
+@keyframes ring{
+  0%{box-shadow:0 0 0 0 rgba(45,126,247,0.5)}
+  70%{box-shadow:0 0 0 14px rgba(45,126,247,0)}
+  100%{box-shadow:0 0 0 0 rgba(45,126,247,0)}
+}
+.cta{animation:fadeUp 0.5s 0.35s ease both, ring 2.5s 1.5s ease-in-out infinite}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="live">
+    <div class="live-dot"></div>
+    Accepting Members Now
+  </div>
+
+  <div class="logo">
+    <span class="e">Earn</span><span class="g">Edge</span>
+  </div>
+  <div class="tagline">Global · Earn Smart</div>
+
+  <div class="divider"></div>
+
+  <div class="headline">
+    Ghar Baithe<br>
+    <span class="gold">Real Paisa</span> Kamao 💰
+  </div>
+
+  <div class="sub">
+    No investment. No experience.<br>
+    Sirf apna time do — <strong style="color:#f0f4ff">aur paisa lo.</strong>
+  </div>
+
+  <div class="pills">
+    <div class="pill">📲 App Referrals</div>
+    <div class="pill">⭐ Review Tasks</div>
+    <div class="pill">📈 Promotions</div>
+  </div>
+
+  <a href="https://t.me/+LJ0Ncka9gD5hMTU1" class="cta">
+    <span class="cta-icon">✈️</span>
+    Join Free — Ab Shuru Karo
+  </a>
+
+  <div class="free-note">
+    <span>✅ Free</span> &nbsp;·&nbsp;
+    <span>✅ Instant Access</span> &nbsp;·&nbsp;
+    <span>✅ Daily Tasks</span>
+  </div>
+
+</div>
+</body>
+</html>
