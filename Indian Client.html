@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EarnEdge Global — Google Reviews for Indian Businesses</title>
+<meta name="description" content="Apne business ke liye genuine Google Maps reviews paye sirf Rs499 se. India ke local businesses ka bharosa.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#060d1f;--deep:#0a1628;--card:#0f1e35;
+  --blue:#2d7ef7;--blue2:#5b9fff;
+  --gold:#e8c96a;--gold2:#c9a84c;
+  --silver:#a8b8d0;--white:#f0f4ff;
+  --green:#22c55e;--border:rgba(45,126,247,0.18);
+  --orange:#f97316;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
+
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(45,126,247,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,126,247,0.04) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,black,transparent)}
+.orb1,.orb2{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0}
+.orb1{width:700px;height:700px;background:radial-gradient(circle,rgba(45,126,247,0.15),transparent 70%);top:-250px;left:-200px;animation:o1 16s ease-in-out infinite}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(249,115,22,0.07),transparent 70%);bottom:-100px;right:-100px;animation:o2 20s ease-in-out infinite}
+@keyframes o1{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,50px)}}
+@keyframes o2{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,-40px)}}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:rgba(6,13,31,0.92);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(45,126,247,0.1)}
+.nl{display:flex;align-items:center;gap:10px}
+.nl-icon{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#1a5fc8,#2d7ef7);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:14px;font-weight:900;color:#fff;
+  box-shadow:0 4px 12px rgba(45,126,247,0.35);flex-shrink:0}
+.nl-text{font-family:'Playfair Display',serif;font-size:17px;font-weight:700}
+.nl-text .e{color:var(--white)}.nl-text .g{color:var(--blue)}
+.nav-actions{display:flex;align-items:center;gap:8px}
+.nav-wp{display:inline-flex;align-items:center;gap:6px;
+  background:#25D366;color:white;font-size:12px;font-weight:700;
+  padding:8px 16px;border-radius:30px;text-decoration:none;
+  box-shadow:0 4px 14px rgba(37,211,102,0.35);transition:all 0.3s;white-space:nowrap}
+.nav-wp:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,0.5)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#1a5fc8,#2d7ef7);color:white;
+  font-size:12px;font-weight:700;padding:8px 16px;border-radius:30px;
+  text-decoration:none;box-shadow:0 4px 14px rgba(45,126,247,0.35);
+  transition:all 0.3s;white-space:nowrap}
+.nav-cta:hover{transform:translateY(-2px)}
+
+.hero{position:relative;z-index:1;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:110px 24px 70px}
+.hero-flag{font-size:42px;margin-bottom:16px;animation:fadeUp 0.6s ease both}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);
+  color:#4ade80;font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;padding:7px 18px;border-radius:30px;
+  margin-bottom:24px;animation:fadeUp 0.6s 0.05s ease both}
+.hb-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:'Playfair Display',serif;
+  font-size:clamp(30px,6vw,64px);font-weight:900;line-height:1.1;
+  margin-bottom:18px;animation:fadeUp 0.6s 0.1s ease both}
+.hero h1 .blue{color:var(--blue);text-shadow:0 0 40px rgba(45,126,247,0.4)}
+.hero h1 .gold{color:var(--gold)}
+.hero-sub{font-size:clamp(14px,2vw,18px);font-weight:300;color:var(--silver);
+  max-width:600px;line-height:1.75;margin-bottom:14px;
+  animation:fadeUp 0.6s 0.15s ease both}
+.hero-sub strong{color:var(--white);font-weight:600}
+.hero-compare{display:inline-block;
+  background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.25);
+  color:var(--orange);font-size:13px;font-weight:600;
+  padding:8px 20px;border-radius:20px;margin-bottom:32px;
+  animation:fadeUp 0.6s 0.2s ease both}
+
+.hero-prices{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;
+  margin-bottom:32px;animation:fadeUp 0.6s 0.25s ease both}
+.hp-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;padding:14px 18px;text-align:center;min-width:100px;transition:all 0.3s}
+.hp-card.popular{border-color:rgba(45,126,247,0.4);background:rgba(45,126,247,0.08)}
+.hp-name{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--silver);margin-bottom:5px}
+.hp-price{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--white)}
+.hp-reviews{font-size:11px;color:var(--silver);margin-top:3px}
+.hp-badge{font-size:9px;font-weight:700;background:var(--blue);color:#fff;
+  padding:2px 8px;border-radius:10px;margin-top:5px;display:inline-block;letter-spacing:1px}
+
+.hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;
+  margin-bottom:14px;animation:fadeUp 0.6s 0.3s ease both}
+.btn-main{display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#1a5fc8,#2d7ef7);color:white;
+  font-size:16px;font-weight:700;padding:16px 36px;border-radius:50px;
+  text-decoration:none;box-shadow:0 8px 28px rgba(45,126,247,0.45);
+  transition:all 0.3s;border:1px solid rgba(255,255,255,0.15)}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(45,126,247,0.6)}
+.btn-wp{display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:white;font-size:16px;font-weight:700;
+  padding:16px 36px;border-radius:50px;text-decoration:none;
+  box-shadow:0 8px 28px rgba(37,211,102,0.4);transition:all 0.3s;
+  border:1px solid rgba(255,255,255,0.15)}
+.btn-wp:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(37,211,102,0.6)}
+.btn-note{font-size:12px;color:rgba(168,184,208,0.45);animation:fadeUp 0.6s 0.35s ease both}
+.btn-note span{color:#4ade80;font-weight:600}
+
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  color:rgba(168,184,208,0.3);font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.sh-line{width:1px;height:28px;background:linear-gradient(to bottom,rgba(45,126,247,0.5),transparent);animation:shA 2s ease-in-out infinite}
+@keyframes shA{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(0.4);opacity:0.3}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 24px}
+.sec-eye{font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(24px,4vw,38px);font-weight:900;color:var(--white);margin-bottom:10px;line-height:1.2}
+.sec-title span{color:var(--blue)}
+.sec-sub{font-size:14px;color:var(--silver);line-height:1.7;margin-bottom:32px}
+.sec-pad{padding:56px 0}
+.divider{height:1px;background:linear-gradient(to right,transparent,rgba(45,126,247,0.2),transparent);margin:0 0 56px}
+
+.trust-inner{background:var(--card);border:1px solid var(--border);border-radius:20px;
+  padding:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+  gap:0;position:relative;overflow:hidden;margin-bottom:56px}
+.trust-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--blue),var(--orange),transparent)}
+.ti{text-align:center;padding:14px;border-right:1px solid rgba(255,255,255,0.05)}
+.ti:last-child{border-right:none}
+.ti-val{font-family:'Playfair Display',serif;font-size:30px;font-weight:900;line-height:1;margin-bottom:5px}
+.ti-val.b{color:var(--blue)}.ti-val.g{color:#4ade80}.ti-val.gold{color:var(--gold)}.ti-val.o{color:var(--orange)}.ti-val.w{color:var(--white)}
+.ti-lbl{font-size:11px;color:var(--silver)}
+@media(max-width:540px){.ti{border-right:none;border-bottom:1px solid rgba(255,255,255,0.05)}.ti:last-child{border-bottom:none}}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.pkg{background:var(--card);border:1px solid rgba(255,255,255,0.07);
+  border-radius:22px;overflow:hidden;position:relative;transition:transform 0.3s,border-color 0.3s}
+.pkg:hover{transform:translateY(-5px)}
+.pkg.popular{border-color:rgba(45,126,247,0.35)}
+.pkg::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pkg.starter::before{background:linear-gradient(to right,#22c55e,#16a34a)}
+.pkg.popular::before{background:linear-gradient(to right,#2d7ef7,#e8c96a)}
+.pkg.premium::before{background:linear-gradient(to right,#e8c96a,#c9a84c)}
+.pkg-popular-tag{position:absolute;top:14px;right:14px;
+  background:var(--blue);color:#fff;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px}
+.pkg-top{padding:26px 24px 18px}
+.pkg-icon{font-size:26px;margin-bottom:12px}
+.pkg-name{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--silver);margin-bottom:8px}
+.pkg-price{display:flex;align-items:baseline;gap:3px;margin-bottom:4px}
+.pkg-symbol{font-size:24px;font-weight:700;color:var(--silver);margin-top:4px}
+.pkg-amount{font-family:'Playfair Display',serif;font-size:50px;font-weight:900;color:var(--white);line-height:1}
+.pkg-old{font-size:13px;color:var(--silver);text-decoration:line-through;opacity:0.4;margin-left:4px;align-self:center}
+.pkg-reviews{font-size:14px;color:var(--silver);margin-bottom:4px}
+.pkg-save{display:inline-block;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);
+  color:#4ade80;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:16px}
+.pkg-divider{height:1px;background:rgba(255,255,255,0.06);margin:0 24px}
+.pkg-features{padding:18px 24px 20px}
+.feat{display:flex;align-items:flex-start;gap:9px;margin-bottom:10px;font-size:13px;color:var(--silver)}
+.feat:last-child{margin-bottom:0}
+.feat-check{color:#4ade80;flex-shrink:0;margin-top:1px}
+.pkg-actions{padding:0 24px 24px;display:flex;flex-direction:column;gap:8px}
+.pkg-btn-pay{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:#25D366;color:white;font-size:14px;font-weight:700;padding:13px;border-radius:12px;
+  text-decoration:none;box-shadow:0 6px 18px rgba(37,211,102,0.35);
+  transition:all 0.3s;width:100%}
+.pkg-btn-pay:hover{box-shadow:0 10px 28px rgba(37,211,102,0.55);transform:translateY(-2px)}
+.pkg.popular .pkg-btn-pay{background:linear-gradient(135deg,#1a9e4a,#25D366)}
+.pkg-btn-wp2{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.25);
+  color:#4ade80;font-size:13px;font-weight:600;padding:10px;
+  border-radius:12px;text-decoration:none;transition:all 0.3s}
+.pkg-btn-wp2:hover{background:rgba(37,211,102,0.15);transform:translateY(-1px)}
+
+.contact-strip{background:var(--card);border:1px solid var(--border);
+  border-radius:18px;padding:24px;
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;
+  margin-bottom:56px}
+.cs-label{font-size:13px;font-weight:600;color:var(--silver)}
+.contact-btn{display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;
+  text-decoration:none;transition:all 0.3s}
+.cb-wp{background:#25D366;color:white;box-shadow:0 4px 14px rgba(37,211,102,0.3)}
+.cb-wp:hover{transform:translateY(-2px)}
+.cb-wp2{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);color:#4ade80}
+.cb-wp2:hover{background:rgba(37,211,102,0.18)}
+.cb-email{background:rgba(45,126,247,0.1);border:1px solid rgba(45,126,247,0.3);color:var(--blue2)}
+.cb-email:hover{background:rgba(45,126,247,0.18)}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.why-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);
+  border-radius:16px;padding:22px;transition:border-color 0.3s,transform 0.3s}
+.why-card:hover{border-color:rgba(45,126,247,0.25);transform:translateY(-3px)}
+.wc-icon{font-size:26px;margin-bottom:12px}
+.wc-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:7px}
+.wc-desc{font-size:12px;color:var(--silver);line-height:1.65}
+
+.biz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.biz-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);
+  border-radius:14px;padding:16px 12px;text-align:center;transition:all 0.3s}
+.biz-card:hover{border-color:rgba(45,126,247,0.3);transform:translateY(-3px)}
+.biz-icon{font-size:26px;margin-bottom:7px}
+.biz-name{font-size:12px;font-weight:600;color:var(--white);margin-bottom:3px}
+.biz-note{font-size:10px;color:var(--silver);opacity:0.6}
+
+.steps{display:flex;flex-direction:column;max-width:680px;margin:0 auto}
+.step{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.step:last-child{border-bottom:none}
+.step-num{width:40px;height:40px;min-width:40px;border-radius:11px;
+  background:rgba(45,126,247,0.1);border:1px solid rgba(45,126,247,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:var(--blue);margin-top:2px}
+.step-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.step-desc{font-size:13px;color:var(--silver);line-height:1.65}
+
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.tc{background:var(--card);border:1px solid rgba(255,255,255,0.06);
+  border-radius:16px;padding:22px;transition:border-color 0.3s}
+.tc:hover{border-color:rgba(45,126,247,0.2)}
+.tc-stars{font-size:13px;margin-bottom:10px}
+.tc-text{font-size:13px;color:var(--silver);line-height:1.7;margin-bottom:14px;font-style:italic}
+.tc-author{display:flex;align-items:center;gap:10px}
+.tc-av{width:36px;height:36px;min-width:36px;min-height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:800;color:#fff;flex-shrink:0;flex-grow:0}
+.tc-name{font-size:13px;font-weight:700;color:var(--white)}
+.tc-biz{font-size:11px;color:var(--silver);opacity:0.6;margin-top:2px}
+
+.fcta-box{background:linear-gradient(135deg,#0d1f4a,#0a1628);
+  border:1px solid rgba(45,126,247,0.3);border-radius:26px;
+  padding:48px 32px;text-align:center;position:relative;overflow:hidden;margin-bottom:80px}
+.fcta-box::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(45,126,247,0.1),transparent)}
+.fcta-box::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--blue),var(--orange),transparent)}
+.fcta-tag{display:inline-block;background:rgba(249,115,22,0.1);
+  border:1px solid rgba(249,115,22,0.3);color:var(--orange);
+  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  padding:6px 16px;border-radius:20px;margin-bottom:18px;position:relative;z-index:1}
+.fcta-box h2{font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,38px);font-weight:900;
+  color:var(--white);line-height:1.15;margin-bottom:10px;position:relative;z-index:1}
+.fcta-box h2 span{color:var(--blue)}
+.fcta-box p{font-size:14px;color:var(--silver);line-height:1.7;margin-bottom:28px;position:relative;z-index:1}
+.fcta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:#25D366;color:white;font-size:17px;font-weight:700;
+  padding:18px 48px;border-radius:50px;text-decoration:none;
+  box-shadow:0 8px 28px rgba(37,211,102,0.45);transition:all 0.3s;
+  border:1px solid rgba(255,255,255,0.15);position:relative;z-index:1}
+.fcta-btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(37,211,102,0.6)}
+
+footer{position:relative;z-index:1;
+  background:rgba(6,13,31,0.95);border-top:1px solid rgba(255,255,255,0.05);
+  padding:32px 24px;text-align:center}
+.f-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.f-logo .e{color:var(--white)}.f-logo .g{color:var(--blue)}
+.f-contacts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:14px 0}
+.f-contact-btn{display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;transition:all 0.2s}
+.fc-wp{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);color:#4ade80}
+.fc-email{background:rgba(45,126,247,0.1);border:1px solid rgba(45,126,247,0.25);color:var(--blue2)}
+footer p{font-size:11px;color:rgba(168,184,208,0.3);margin-top:6px}
+
+.float-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:rgba(6,13,31,0.97);border-top:1px solid rgba(45,126,247,0.2);
+  padding:12px 16px;gap:10px}
+@media(max-width:640px){.float-bar{display:flex;padding-bottom:16px}}
+.fb-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px;border-radius:14px;font-size:14px;font-weight:700;text-decoration:none}
+.fb-pay{background:linear-gradient(135deg,#1a5fc8,#2d7ef7);color:white;
+  box-shadow:0 4px 14px rgba(45,126,247,0.4)}
+.fb-wp{background:#25D366;color:white;box-shadow:0 4px 14px rgba(37,211,102,0.35)}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="orb1"></div>
+<div class="orb2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nl">
+    <div class="nl-icon">EE</div>
+    <div class="nl-text"><span class="e">Earn</span><span class="g">Edge</span></div>
+  </div>
+  <div class="nav-actions">
+    <a href="https://wa.me/919409023210?text=Namaste!%20Mujhe%20Google%20Reviews%20service%20ke%20baare%20mein%20jaankari%20chahiye." target="_blank" class="nav-wp">💬 WhatsApp</a>
+    <a href="#pricing" class="nav-cta">Plans Dekhein →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-flag">🇮🇳</div>
+  <div class="hero-badge"><span class="hb-dot"></span> India Ke Local Businesses Ka Bharosa</div>
+  <h1>Zyada Google Reviews.<br><span class="blue">Zyada Customers.</span><br><span class="gold">Zyada Kamai.</span></h1>
+  <p class="hero-sub">Aajkal log koi bhi business dhundhne se pehle Google check karte hain.<br><strong>Hum aapke business ko wo reviews dilate hain jo uske layak hain</strong> — fast, affordable aur professional.</p>
+  <div class="hero-compare">🔥 Sirf ₹499 se shuru — India ka sabse affordable review service</div>
+  <div class="hero-prices">
+    <div class="hp-card">
+      <div class="hp-name">Starter</div>
+      <div class="hp-price">₹499</div>
+      <div class="hp-reviews">20 Reviews</div>
+    </div>
+    <div class="hp-card popular">
+      <div class="hp-name">Standard</div>
+      <div class="hp-price">₹999</div>
+      <div class="hp-reviews">50 Reviews</div>
+      <div class="hp-badge">POPULAR</div>
+    </div>
+    <div class="hp-card">
+      <div class="hp-name">Premium</div>
+      <div class="hp-price">₹1899</div>
+      <div class="hp-reviews">100 Reviews</div>
+    </div>
+  </div>
+  <div class="hero-ctas">
+    <a href="#pricing" class="btn-main">🚀 Sare Plans Dekhein</a>
+    <a href="https://wa.me/919409023210?text=Namaste!%20Mujhe%20apne%20business%20ke%20liye%20Google%20reviews%20chahiye." target="_blank" class="btn-wp">💬 WhatsApp Karein</a>
+  </div>
+  <div class="btn-note"><span>✅ Koi contract nahi</span> &nbsp;·&nbsp; <span>✅ 7 din mein result</span> &nbsp;·&nbsp; <span>✅ WhatsApp pe payment</span></div>
+  <div class="scroll-hint"><div class="sh-line"></div><span>Scroll</span></div>
+</section>
+
+<div class="wrap">
+
+  <!-- TRUST BAR -->
+  <div class="trust-inner">
+    <div class="ti"><div class="ti-val b">1000+</div><div class="ti-lbl">Businesses Served</div></div>
+    <div class="ti"><div class="ti-val o">₹499</div><div class="ti-lbl">Starting Price</div></div>
+    <div class="ti"><div class="ti-val g">7 Din</div><div class="ti-lbl">Delivery Time</div></div>
+    <div class="ti"><div class="ti-val w">100%</div><div class="ti-lbl">Safe Process</div></div>
+    <div class="ti"><div class="ti-val gold">4.9★</div><div class="ti-lbl">Client Rating</div></div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="sec-pad" id="pricing">
+    <div class="sec-eye">Pricing</div>
+    <div class="sec-title">Simple, <span>Affordable Packages</span></div>
+    <div class="sec-sub">Koi hidden fees nahi. Koi contract nahi. WhatsApp pe order karo, results pao.</div>
+    <div class="pricing-grid">
+
+      <div class="pkg starter">
+        <div class="pkg-top">
+          <div class="pkg-icon">🥉</div>
+          <div class="pkg-name">Starter</div>
+          <div class="pkg-price"><span class="pkg-symbol">₹</span><span class="pkg-amount">499</span><span class="pkg-old">₹1,200</span></div>
+          <div class="pkg-reviews">20 Google Reviews</div>
+          <div class="pkg-save">58% Savings — Limited Time</div>
+        </div>
+        <div class="pkg-divider"></div>
+        <div class="pkg-features">
+          <div class="feat"><span class="feat-check">✅</span> 20 genuine Google reviews</div>
+          <div class="feat"><span class="feat-check">✅</span> 3–5 star ratings</div>
+          <div class="feat"><span class="feat-check">✅</span> 7 din mein deliver</div>
+          <div class="feat"><span class="feat-check">✅</span> Screenshot proof milega</div>
+          <div class="feat"><span class="feat-check">✅</span> WhatsApp support</div>
+        </div>
+        <div class="pkg-actions">
+          <a href="https://wa.me/919409023210?text=Namaste%20EarnEdge%20Global!%20Mujhe%20Starter%20Package%20(20%20Reviews%20-%20Rs499)%20lena%20hai.%20Payment%20details%20share%20karein." target="_blank" class="pkg-btn-pay">💬 WhatsApp Pe Order Karein — ₹499</a>
+          <a href="https://wa.me/917359908942?text=Namaste%20EarnEdge%20Global!%20Mujhe%20Starter%20Package%20(20%20Reviews%20-%20Rs499)%20lena%20hai.%20Payment%20details%20share%20karein." target="_blank" class="pkg-btn-wp2">💬 Dusre Number Pe Contact Karein</a>
+        </div>
+      </div>
+
+      <div class="pkg popular">
+        <div class="pkg-popular-tag">⭐ MOST POPULAR</div>
+        <div class="pkg-top">
+          <div class="pkg-icon">🥈</div>
+          <div class="pkg-name">Standard</div>
+          <div class="pkg-price"><span class="pkg-symbol">₹</span><span class="pkg-amount">999</span><span class="pkg-old">₹2,500</span></div>
+          <div class="pkg-reviews">50 Google Reviews</div>
+          <div class="pkg-save">60% Savings — Best Value</div>
+        </div>
+        <div class="pkg-divider"></div>
+        <div class="pkg-features">
+          <div class="feat"><span class="feat-check">✅</span> 50 genuine Google reviews</div>
+          <div class="feat"><span class="feat-check">✅</span> 3–5 star ratings</div>
+          <div class="feat"><span class="feat-check">✅</span> 7 din mein deliver</div>
+          <div class="feat"><span class="feat-check">✅</span> Screenshot proof milega</div>
+          <div class="feat"><span class="feat-check">✅</span> Priority WhatsApp support</div>
+          <div class="feat"><span class="feat-check">✅</span> Full delivery report</div>
+        </div>
+        <div class="pkg-actions">
+          <a href="https://wa.me/919409023210?text=Namaste%20EarnEdge%20Global!%20Mujhe%20Standard%20Package%20(50%20Reviews%20-%20Rs999)%20lena%20hai.%20Payment%20details%20share%20karein." target="_blank" class="pkg-btn-pay">💬 WhatsApp Pe Order Karein — ₹999</a>
+          <a href="https://wa.me/917359908942?text=Namaste%20EarnEdge%20Global!%20Mujhe%20Standard%20Package%20(50%20Reviews%20-%20Rs999)%20lena%20hai.%20Payment%20details%20share%20karein." target="_blank" class="pkg-btn-wp2">💬 Dusre Number Pe Contact Karein</a>
+        </div>
+      </div>
+
+      <div class="pkg premium">
+        <div class="pkg-top">
+          <div class="pkg-icon">🥇</div>
+          <div class="pkg-name">Premium</div>
+          <div class="pkg-price"><span class="pkg-symbol">₹</span><span class="pkg-amount">1899</span><span class="pkg-old">₹5,000</span></div>
+          <div class="pkg-reviews">100 Google Reviews</div>
+          <div class="pkg-save">62% Savings — Maximum Impact</div>
+        </div>
+        <div class="pkg-divider"></div>
+        <div class="pkg-features">
+          <div class="feat"><span class="feat-check">✅</span> 100 genuine Google reviews</div>
+          <div class="feat"><span class="feat-check">✅</span> 3–5 star ratings</div>
+          <div class="feat"><span class="feat-check">✅</span> 10 din mein deliver</div>
+          <div class="feat"><span class="feat-check">✅</span> Screenshot proof milega</div>
+          <div class="feat"><span class="feat-check">✅</span> VIP WhatsApp support</div>
+          <div class="feat"><span class="feat-check">✅</span> Full delivery report</div>
+          <div class="feat"><span class="feat-check">✅</span> Free follow-up consultation</div>
+        </div>
+        <div class="pkg-actions">
+          <a href="https://wa.me/919409023210?text=Namaste%20EarnEdge%20Global!%20Mujhe%20Premium%20Package%20(100%20Reviews%20-%20Rs1899)%20lena%20hai.%20Payment%20details%20share%20karein." target="_blank" class="pkg-btn-pay">💬 WhatsApp Pe Order Karein — ₹1899</a>
+          <a href="https://wa.me/917359908942?text=Namaste%20EarnEdge%20Global!%20Mujhe%20Premium%20Package%20(100%20Reviews%20-%20Rs1899)%20lena%20hai.%20Payment%20details%20share%20karein." target="_blank" class="pkg-btn-wp2">💬 Dusre Number Pe Contact Karein</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT STRIP -->
+  <div class="contact-strip">
+    <span class="cs-label">💬 Koi sawaal hai?</span>
+    <a href="https://wa.me/919409023210?text=Namaste!%20Google%20Reviews%20service%20ke%20baare%20mein%20jaankari%20chahiye." target="_blank" class="contact-btn cb-wp">💬 +91 94090 23210</a>
+    <a href="https://wa.me/917359908942?text=Namaste!%20Google%20Reviews%20service%20ke%20baare%20mein%20jaankari%20chahiye." target="_blank" class="contact-btn cb-wp2">💬 +91 73599 08942</a>
+    <a href="mailto:earnedgeglobal@gmail.com?subject=Google%20Reviews%20Query" class="contact-btn cb-email">📧 Email Karein</a>
+  </div>
+
+  <!-- WHO WE HELP -->
+  <div class="sec-pad">
+    <div class="sec-eye">Kaun Join Kar Sakta Hai</div>
+    <div class="sec-title">Har <span>Local Business</span> Ke Liye</div>
+    <div class="sec-sub">Agar aapke customers Google pe dhundhte hain — aapko zyada reviews chahiye.</div>
+    <div class="biz-grid">
+      <div class="biz-card"><div class="biz-icon">🍽️</div><div class="biz-name">Restaurant / Dhaba</div><div class="biz-note">Zyada reviews = zyada customers</div></div>
+      <div class="biz-card"><div class="biz-icon">💈</div><div class="biz-name">Salon / Parlour</div><div class="biz-note">Trust badhao jaldi</div></div>
+      <div class="biz-card"><div class="biz-icon">🏋️</div><div class="biz-name">Gym</div><div class="biz-note">Competition se aage niklo</div></div>
+      <div class="biz-card"><div class="biz-icon">🏥</div><div class="biz-name">Doctor / Clinic</div><div class="biz-note">Patients reviews dekhte hain</div></div>
+      <div class="biz-card"><div class="biz-icon">📚</div><div class="biz-name">Coaching Class</div><div class="biz-note">Zyada admissions pao</div></div>
+      <div class="biz-card"><div class="biz-icon">🚗</div><div class="biz-name">Car Workshop</div><div class="biz-note">Local competition beat karo</div></div>
+      <div class="biz-card"><div class="biz-icon">🏪</div><div class="biz-name">Kirana / Shop</div><div class="biz-note">Online visible bano</div></div>
+      <div class="biz-card"><div class="biz-icon">🏨</div><div class="biz-name">Hotel / Lodge</div><div class="biz-note">Bookings badhao</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHY US -->
+  <div class="sec-pad">
+    <div class="sec-eye">Kyun Choose Karein</div>
+    <div class="sec-title">Businesses Hume <span>Kyun Choose Karte Hain</span></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="wc-icon">💰</div><div class="wc-title">Sabse Sasta Price</div><div class="wc-desc">Dusre services ₹100+ per review charge karte hain. Hum sirf ₹499 mein 20 reviews dete hain.</div></div>
+      <div class="why-card"><div class="wc-icon">⚡</div><div class="wc-title">Fast Delivery</div><div class="wc-desc">Sirf 7 din mein reviews deliver. Koi wait nahi, koi delay nahi. Results fast milte hain.</div></div>
+      <div class="why-card"><div class="wc-icon">📸</div><div class="wc-title">Screenshot Proof</div><div class="wc-desc">Har review ka screenshot aapko milega. Poori transparency, hamesha.</div></div>
+      <div class="why-card"><div class="wc-icon">🔒</div><div class="wc-title">Safe Process</div><div class="wc-desc">Reviews alag-alag accounts se alag-alag din post hote hain. Bilkul natural lagta hai.</div></div>
+      <div class="why-card"><div class="wc-icon">💬</div><div class="wc-title">WhatsApp Support</div><div class="wc-desc">Seedha WhatsApp pe baat karo. Order track karo, sawaal poochho — kabhi bhi.</div></div>
+      <div class="why-card"><div class="wc-icon">📱</div><div class="wc-title">Easy Payment</div><div class="wc-desc">PhonePe, GPay, Paytm — hum WhatsApp pe payment details share karte hain. Quick & easy.</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <div class="sec-pad">
+    <div style="text-align:center;margin-bottom:32px">
+      <div class="sec-eye">Process</div>
+      <div class="sec-title">Kaise Kaam <span>Karta Hai</span></div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div><div class="step-title">Package Choose Karein</div><div class="step-desc">Starter, Standard ya Premium mein se apne budget ke according package select karein aur WhatsApp pe message karein.</div></div></div>
+      <div class="step"><div class="step-num">02</div><div><div class="step-title">Payment Details Pao</div><div class="step-desc">Hum aapko WhatsApp pe UPI / PhonePe / GPay payment details bhejenge. Payment karo aur screenshot share karo.</div></div></div>
+      <div class="step"><div class="step-num">03</div><div><div class="step-title">Google Maps Link Bhejein</div><div class="step-desc">Apne business ka Google Maps link WhatsApp pe bhejein. Hum 24 ghante mein kaam shuru kar denge.</div></div></div>
+      <div class="step"><div class="step-num">04</div><div><div class="step-title">Reviews Aur Report Pao</div><div class="step-desc">7 din mein sare reviews post ho jayenge. Poora screenshot report WhatsApp pe milega. Rating badh jayegi!</div></div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <div class="sec-pad">
+    <div class="sec-eye">Client Reviews</div>
+    <div class="sec-title">Humara Kaam <span>Bolata Hai</span></div>
+    <div class="testi-grid">
+
+      <div class="tc">
+        <div class="tc-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tc-text">"Pehle mera restaurant Google pe nahi dikhta tha. 50 reviews ke baad rating 4.6 ho gayi aur customers khud aane lage. Best investment!"</div>
+        <div class="tc-author">
+          <div class="tc-av" style="background:linear-gradient(135deg,#1a5fc8,#2d7ef7)">R</div>
+          <div><div class="tc-name">Ramesh B.</div><div class="tc-biz">🍽️ Restaurant — Surat, Gujarat</div></div>
+        </div>
+      </div>
+
+      <div class="tc">
+        <div class="tc-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tc-text">"Sirf ₹999 mein 50 reviews mile. WhatsApp pe poori update milti rahi. Genuine service hai — koi fraud nahi. Highly recommend!"</div>
+        <div class="tc-author">
+          <div class="tc-av" style="background:linear-gradient(135deg,#c9a84c,#e8c96a)">P</div>
+          <div><div class="tc-name">Priya S.</div><div class="tc-biz">💈 Beauty Parlour — Ahmedabad</div></div>
+        </div>
+      </div>
+
+      <div class="tc">
+        <div class="tc-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tc-text">"Meri coaching class ke admissions 30% badh gaye ek mahine mein. Parents Google pe dekhte hain aur direct call aata hai ab!"</div>
+        <div class="tc-author">
+          <div class="tc-av" style="background:linear-gradient(135deg,#16a34a,#22c55e)">A</div>
+          <div><div class="tc-name">Amit T.</div><div class="tc-biz">📚 Coaching Center — Mumbai</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="fcta-box">
+    <div class="fcta-tag">🔥 Limited Time Offer</div>
+    <h2>Apne Business Ko <span>Google Pe Top Pe Laao!</span></h2>
+    <p>1000+ Indian businesses already humse grow kar rahe hain.<br>Aaj hi WhatsApp karein — 7 din mein guaranteed results.</p>
+    <a href="https://wa.me/919409023210?text=Namaste%20EarnEdge%20Global!%20Mujhe%20apne%20business%20ke%20liye%20Google%20reviews%20chahiye.%20Payment%20details%20share%20karein." target="_blank" class="fcta-btn">💬 Abhi WhatsApp Karein</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo"><span class="e">Earn</span><span class="g">Edge</span> Global</div>
+  <div class="f-contacts">
+    <a href="https://wa.me/919409023210" target="_blank" class="f-contact-btn fc-wp">💬 +91 94090 23210</a>
+    <a href="https://wa.me/917359908942" target="_blank" class="f-contact-btn fc-wp">💬 +91 73599 08942</a>
+    <a href="mailto:earnedgeglobal@gmail.com" class="f-contact-btn fc-email">📧 earnedgeglobal@gmail.com</a>
+  </div>
+  <p>🇮🇳 India Ke Local Businesses Ka Bharosa &nbsp;·&nbsp; © 2026 EarnEdge Global</p>
+</footer>
+
+<!-- MOBILE FLOAT -->
+<div class="float-bar">
+  <a href="#pricing" class="fb-btn fb-pay">🚀 Plans Dekhein</a>
+  <a href="https://wa.me/919409023210?text=Namaste%20EarnEdge%20Global!%20Mujhe%20Google%20reviews%20chahiye." target="_blank" class="fb-btn fb-wp">💬 WhatsApp</a>
+</div>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}
+  });
+},{threshold:0.08});
+document.querySelectorAll('.pkg,.why-card,.biz-card,.tc,.step').forEach(el=>{
+  el.style.opacity='0';el.style.transform='translateY(22px)';
+  el.style.transition='opacity 0.55s ease,transform 0.55s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
